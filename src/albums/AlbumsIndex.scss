@@ -1,0 +1,30 @@
+$dark: rgba(0, 0, 0, .2);
+
+.display-box {
+  transition-duration: .1s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+  text-shadow: .5px 1px 2px #000000;
+
+  &:hover {
+    background: linear-gradient($dark, $dark), url('https://img.discogs.com/jwmEhAbhbtJRNugbUvyehTPwJLs=/fit-in/600x591/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-2498807-1425279296-1235.jpeg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: .6em;
+    line-height: 1.2;
+    transform: scale(1.5, 1.5);
+    transition-delay: .3s;
+    transition-duration: .3s;
+    transition-property: transform, background;
+    transition-timing-function: cubic-bezier(1, 0, 0, 1);
+
+  }
+}
+
+.album-thumb {
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('https://img.discogs.com/jwmEhAbhbtJRNugbUvyehTPwJLs=/fit-in/600x591/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-2498807-1425279296-1235.jpeg.jpg');
+}
