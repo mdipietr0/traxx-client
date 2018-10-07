@@ -16,20 +16,13 @@ class AlbumsIndex extends Component {
     this.state = {}
   }
 
-  onMouseEnter = (e) => e.currentTarget.children[0].classList.remove('d-none')
-
-  onMouseLeave = (e) => e.currentTarget.children[0].classList.add('d-none')
-
   render () {
-
     const Albums = () => {
       const albums = []
       for (let i = 0; i < 18; i++){
         albums.push(
           <Album
             key={i}
-            // onMouseOut={(e) => this.onMouseLeave(e)}
-            // onMouseOver={(e) => this.onMouseEnter(e)}
             className="album-thumb mb-auto m-1 display-box shadow"
           />
         )
