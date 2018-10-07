@@ -9,6 +9,8 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
+import AlbumsIndex from './albums/AlbumsIndex'
+
 class App extends Component {
   constructor () {
     super()
@@ -40,7 +42,9 @@ class App extends Component {
       <React.Fragment>
         <Header user={user} />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-
+        <Route path='/results' render={() => (
+          <AlbumsIndex />
+        )} />
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />
