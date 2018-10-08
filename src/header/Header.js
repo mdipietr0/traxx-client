@@ -47,7 +47,7 @@ const navbarBrand = (
 
 const Header = ({ user }) => (
   <header>
-    <nav className="navbar navbar-expand-lg navbar-light bg-light border border-bottom shadow-sm py-0">
+    <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light border border-bottom shadow-sm py-0">
       {navbarBrand}
       {/* TODO Implement custom collapse */}
       {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

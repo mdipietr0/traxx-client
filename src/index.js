@@ -20,3 +20,5 @@ const appWrapper = (
 ReactDOM.render(appWrapper, document.getElementById('root'))
 
 document.body.classList.add('bg-light')
+document.body.classList.add('pt-5')
+document.body.classList.add('mt-5')
