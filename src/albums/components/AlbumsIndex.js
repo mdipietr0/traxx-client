@@ -8,7 +8,7 @@ import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faStroopwafel)
 
-import './AlbumsIndex.scss'
+import '../styles/AlbumsIndex.scss'
 
 class AlbumsIndex extends Component {
   constructor (props) {

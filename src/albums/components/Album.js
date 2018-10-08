@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 // refactor api calls into seperate file
-import apiUrl from '../apiConfig'
+import apiUrl from '../../apiConfig'
 
-import {index, create} from './api'
+import {index, create} from '../api'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

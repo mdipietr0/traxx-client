@@ -8,7 +8,7 @@ import { faPlusCircle, faHeart } from '@fortawesome/free-solid-svg-icons'
 library.add(faPlusCircle)
 library.add(faHeart)
 
-import './ThumbInfo.scss'
+import '../styles/ThumbInfo.scss'
 
 // import './Album.scss'
 

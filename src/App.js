@@ -9,7 +9,7 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
-import AlbumsIndex from './albums/AlbumsIndex'
+import AlbumsIndex from './albums/components/AlbumsIndex'
 
 class App extends Component {
   constructor () {
