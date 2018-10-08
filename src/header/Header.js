@@ -7,6 +7,9 @@ const authenticatedOptions = (
   <React.Fragment>
     {/*TODO Add class active to active element*/}
     <li className="nav-item">
+      <Link to="/wishlist" className="nav-link">My Wishlist</Link>
+    </li>
+    <li className="nav-item">
       <Link to="/change-password" className="nav-link">Change Password <span className="sr-only">(current)</span></Link>
     </li>
     <li className="nav-item">

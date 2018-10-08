@@ -10,6 +10,7 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
 import AlbumsIndex from './albums/components/AlbumsIndex'
+import Wishlist from './albums/components/Wishlist'
 
 class App extends Component {
   constructor () {
@@ -44,6 +45,9 @@ class App extends Component {
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
         <Route path='/results' render={() => (
           <AlbumsIndex user={user}/>
+        )} />
+        <Route path='/wishlist' render={() => (
+          <Wishlist user={user}/>
         )} />
         <main className="container">
           <Route path='/sign-up' render={() => (
