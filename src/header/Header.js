@@ -40,12 +40,14 @@ const unauthenticatedOptions = (
 )
 
 const navbarBrand = (
-  <Link to="/" className="navbar-brand">Traxx</Link>
+  <Link to="/" className="navbar-brand">
+    <img src='traxx.png' className='' width='200px;' alt='logo' />
+  </Link>
 )
 
 const Header = ({ user }) => (
   <header>
-    <nav className="navbar navbar-expand-lg navbar-light bg-light border border-bottom shadow-sm">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light border border-bottom shadow-sm py-0">
       {navbarBrand}
       {/* TODO Implement custom collapse */}
       {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
