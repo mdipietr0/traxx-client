@@ -34,6 +34,8 @@ class AlbumsIndex extends Component {
       results = results.map(result => (
         <Album
           key={result.id}
+          user={this.props.user}
+          id={result.id}
           title={result.title}
           cover_image={result.cover_image}
           className='album-thumb mb-auto m-1 display-box shadow'

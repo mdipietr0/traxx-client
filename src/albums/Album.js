@@ -1,11 +1,17 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
+// refactor api calls into seperate file
+import apiUrl from '../apiConfig'
+
+import {index, create} from './api'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 import ThumbInfo from './ThumbInfo'
+
+import axios from 'axios'
 
 library.add(faStroopwafel)
 
@@ -17,6 +23,16 @@ class Album extends Component {
     this.state = {
       isActive: false
     }
+  }
+
+  onWishlist = () => {
+    const vinyl = {
+      id: this.props.id,
+      collection_type: 'wishlist'
+    }
+    create(vinyl, this.props.user)
+      .then(console.log)
+      .catch(console.err)
   }
 
   // old way to show
@@ -44,7 +60,7 @@ class Album extends Component {
     const {title, cover_image} = this.props
 
     // keep all logic outside of render return
-    // create functions and varialbes outside and use 
+    // create functions and varialbes outside and use
     return (
       <div
         // use onMouseLeave and onMouseEnter instead of onMouseOver and onMouseOut
@@ -62,7 +78,7 @@ class Album extends Component {
           }
         }
       >
-        {(this.state.isActive) && <ThumbInfo title={title} cover_image={cover_image}/>}
+        {(this.state.isActive) && <ThumbInfo onWishlist={this.onWishlist} title={title} cover_image={cover_image}/>}
         {/*
           Hard-coded test album
           <div className={(!this.state.isActive) ? 'd-none' : ''}>

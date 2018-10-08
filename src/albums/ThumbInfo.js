@@ -20,6 +20,7 @@ class ThumbInfo extends Component {
 
   addToWishlist = () => {
     console.log('Add to Wishlist')
+    this.props.onWishlist()
   }
 
   addToFavorites = () => {
