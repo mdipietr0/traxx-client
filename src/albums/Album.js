@@ -18,6 +18,7 @@ class Album extends Component {
       isActive: false
     }
   }
+  
   // old way to show
   // onMouseEnter = (e) => e.currentTarget.children[0].classList.remove('d-none')
 
@@ -40,6 +41,7 @@ class Album extends Component {
   }
 
   render () {
+    const {title, cover_image} = this.props
     return (
       <div
         // use onMouseLeave and onMouseEnter instead of onMouseOver and onMouseOut
@@ -48,13 +50,24 @@ class Album extends Component {
         onMouseLeave={(e) => this.onMouseLeave(e)}
         onMouseEnter={(e) => this.onMouseEnter(e)}
         className="album-thumb mb-auto m-1 display-box shadow"
+        style={!(this.state.isActive) ?
+          {backgroundImage: 'url(\'' + cover_image + '\')'} :
+          {
+            background: 'linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url(\'' + cover_image + '\')',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover'
+          }
+        }
       >
-        {(this.state.isActive) && <ThumbInfo />}
-        {/* <div className={(!this.state.isActive) ? 'd-none' : ''}>
+        {(this.state.isActive) && <ThumbInfo title={title} cover_image={cover_image}/>}
+        {/*
+          Hard-coded test album
+          <div className={(!this.state.isActive) ? 'd-none' : ''}>
           <h6 className='mt-5 p-2 text-left text-white'>Abbey Road</h6>
           <p className='p-2 mb-2 text-left text-white'>Abbey Road is the eleventh studio album by English rock band the Beatles, released on 26 September 1969 by Apple Records.</p>
           <FontAwesomeIcon icon="stroopwafel" />
-        </div> */}
+        </div>
+        */}
       </div>
     )
   }

@@ -29,10 +29,10 @@ class ThumbInfo extends Component {
   render () {
     return (
       <Fragment>
-        <h5 className='mt-4 pl-2 text-left text-white'>Abbey Road</h5>
-        <h6 className='pl-2 text-left text-white'>The Beatles</h6>
+        {/* <h5 className='mt-4 pl-2 text-left text-white'>Abbey Road</h5> */}
+        <h6 className='mt-4 pl-2 text-left text-white'>{this.props.title}</h6>
 
-        <p className='p-2 mb-2 text-left text-white'>Abbey Road is the eleventh studio album by English rock band the Beatles, released on 26 September 1969 by Apple Records.</p>
+        {/* <p className='p-2 mb-2 text-left text-white'>Abbey Road is the eleventh studio album by English rock band the Beatles, released on 26 September 1969 by Apple Records.</p> */}
         <div className='pl-2 pb-3'>
           <FontAwesomeIcon onClick={this.addToWishlist} className='icon-wrapper px-1' title="Add to wishlist" color='white' icon={['fas', 'plus-circle']} />
           <FontAwesomeIcon onClick={this.addToFavorites} className='icon-wrapper px-1' title="Add to favorites" color='white' icon={['fas', 'heart']} />
