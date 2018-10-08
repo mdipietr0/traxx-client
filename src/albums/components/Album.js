@@ -27,8 +27,9 @@ class Album extends Component {
 
   onWishlist = () => {
     const vinyl = {
-      id: this.props.id,
-      collection_type: 'wishlist'
+      collection_type: 'wishlist',
+      id,
+      cover_image
     }
     create(vinyl, this.props.user)
       .then(console.log)
