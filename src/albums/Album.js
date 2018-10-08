@@ -18,7 +18,7 @@ class Album extends Component {
       isActive: false
     }
   }
-  
+
   // old way to show
   // onMouseEnter = (e) => e.currentTarget.children[0].classList.remove('d-none')
 
@@ -42,6 +42,9 @@ class Album extends Component {
 
   render () {
     const {title, cover_image} = this.props
+
+    // keep all logic outside of render return
+    // create functions and varialbes outside and use 
     return (
       <div
         // use onMouseLeave and onMouseEnter instead of onMouseOver and onMouseOut
