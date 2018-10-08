@@ -1,8 +1,8 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const index =  async ({token}) => {
-  return await axios({
+export const index = ({token}) => {
+  return axios({
     method: 'get',
     headers: {
       'Content-Type': 'application/json',
@@ -23,6 +23,7 @@ export const create =  async (vinyl, {token}) => {
     data: JSON.stringify({
       vinyl: {
         vinyl_id: vinyl.id,
+        cover_image: vinyl.cover_image,
         collection_type: vinyl.collection_type
       }
     })
