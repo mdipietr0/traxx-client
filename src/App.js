@@ -43,7 +43,7 @@ class App extends Component {
         <Header user={user} />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
         <Route path='/results' render={() => (
-          <AlbumsIndex />
+          <AlbumsIndex user={user}/>
         )} />
         <main className="container">
           <Route path='/sign-up' render={() => (
