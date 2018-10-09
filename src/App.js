@@ -17,6 +17,7 @@ class App extends Component {
     super()
 
     this.state = {
+      query: '',
       user: null,
       flashMessage: '',
       flashType: null
@@ -36,15 +37,21 @@ class App extends Component {
     }), 2000)
   }
 
+  onChangeQuery = (e) => {
+    this.setState({
+      query: e.target.value
+    })
+  }
+
   render () {
     const { flashMessage, flashType, user } = this.state
 
     return (
       <React.Fragment>
-        <Header user={user} />
+        <Header query={this.state.query} onChangeQuery={(e) => this.onChangeQuery(e)} user={user} />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
         <Route path='/results' render={() => (
-          <Results user={user}/>
+          <Results query={this.state.query} user={user}/>
         )} />
         <Route path='/wishlist' render={() => (
           <Wishlist user={user}/>
