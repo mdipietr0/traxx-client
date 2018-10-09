@@ -14,6 +14,7 @@ class Wishlist extends Component {
   }
 
   componentDidMount() {
+    if(!this.props.user) return
     index(this.props.user).catch(console.err)
       .then(response => {
         this.setState({
