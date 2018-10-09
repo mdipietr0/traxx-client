@@ -11,6 +11,7 @@ import ChangePassword from './auth/components/ChangePassword'
 
 import Results from './albums/components/Results'
 import Wishlist from './albums/components/Wishlist'
+import AlbumShow from './albums/components/AlbumShow'
 
 import axios from 'axios'
 
@@ -76,6 +77,11 @@ class App extends Component {
         <Route path='/wishlist' render={() => (
           <Wishlist user={user}/>
         )} />
+        <Route path='/albumshow' component={AlbumShow} />
+        {/* <Route path='/albumshow' render={(props) => (
+          <AlbumShow
+            user={user}/>
+        )} /> */}
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />

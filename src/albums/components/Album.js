@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
+import React, {Fragment, Component} from 'react'
+import { Link, Redirect } from 'react-router-dom'
 import {index, create, destroy} from '../api'
 import AlbumInfo from './AlbumInfo'
 // import './Album.scss'
@@ -9,7 +9,8 @@ class Album extends Component {
   constructor (props) {
     super (props)
     this.state = {
-      isActive: false
+      isActive: false,
+      redirect: false
     }
   }
 
@@ -53,6 +54,25 @@ class Album extends Component {
     }))
   }
 
+  onClick = () => {
+    console.log('show')
+    this.setState({
+      redirect: true
+    })
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to={{
+        pathname: '/albumshow',
+        state: {
+          id: this.props.id,
+          cover_image: this.props.cover_image
+        }
+      }}/>
+    }
+  }
+
   render () {
     const {title, cover_image} = this.props
     const style = !(this.state.isActive) ?
@@ -69,17 +89,21 @@ class Album extends Component {
     // keep all logic outside of render return
     // create functions and varialbes outside and use
     return (
-      <div
-        // use onMouseLeave and onMouseEnter instead of onMouseOver and onMouseOut
-        // because the former only get called once while the latter will get called
-        // when moving between descendants also. TLDR; fixes repeated firing
-        onMouseLeave={(e) => this.onMouseLeave(e)}
-        onMouseEnter={(e) => this.onMouseEnter(e)}
-        className="album-thumb mb-auto m-1 display-box shadow"
-        style={style}
-      >
-        {thumbInfo}
-      </div>
+      <Fragment>
+        {this.renderRedirect()}
+        <div
+          onClick={this.onClick}
+          // use onMouseLeave and onMouseEnter instead of onMouseOver and onMouseOut
+          // because the former only get called once while the latter will get called
+          // when moving between descendants also. TLDR; fixes repeated firing
+          onMouseLeave={(e) => this.onMouseLeave(e)}
+          onMouseEnter={(e) => this.onMouseEnter(e)}
+          className="album-thumb mb-auto m-1 display-box shadow"
+          style={style}
+        >
+          {thumbInfo}
+        </div>
+      </Fragment>
     )
   }
 }
