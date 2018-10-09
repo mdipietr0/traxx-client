@@ -1,5 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+library.add(faSearch)
 
 import './Header.scss'
 
@@ -33,6 +37,23 @@ const authenticatedOptions = (
 const unauthenticatedOptions = (
   <React.Fragment>
     {/*TODO Add class active to active element*/}
+    <form className="form-inline my-2 my-lg-0">
+      <input
+        className="form-control rounded-0 btn-outline-dark"
+        type="search"
+        placeholder="Search Albums"
+        aria-label="Search"
+      />
+
+      <button className="rounded-0 btn btn-outline-dark my-2 my-sm-0" type="submit">
+        <FontAwesomeIcon
+          // onClick={}
+          title="Search"
+          color='black'
+          icon={['fas', 'search']}
+        />
+      </button>
+    </form>
     <li className="nav-item">
       <Link to="/sign-up" className="nav-link">Sign Up </Link>
     </li>
