@@ -14,7 +14,9 @@ class Album extends Component {
     }
   }
 
-  addToWishlist = () => {
+  addToWishlist = (e) => {
+    // Add error handling for add to wishlist when not signed in
+    e.stopPropagation()
     const {id, cover_image} = this.props
     const vinyl = {
       collection_type: 'wishlist',
@@ -26,7 +28,9 @@ class Album extends Component {
       .catch(console.err)
   }
 
-  removeFromWishlist = () => {
+  removeFromWishlist = (e) => {
+    // Add error handling for remove from wishlist when not signed in
+    e.stopPropagation()
     destroy(this.props._id, this.props.user.token).catch(console.err)
       .then(response => {
         this.props.removeAlbum(this.props.id)
@@ -83,8 +87,8 @@ class Album extends Component {
         backgroundSize: 'cover'
       }
     const thumbInfo = (this.state.isActive) &&
-      ((this.props.isResults && <AlbumInfo isResults={true} addToWishlist={this.addToWishlist} title={title} cover_image={cover_image}/>) ||
-      (this.props.isWishlist && <AlbumInfo isWishlist={true} removeFromWishlist={this.removeFromWishlist} title={title} cover_image={cover_image}/>))
+      ((this.props.isResults && <AlbumInfo isResults={true} addToWishlist={(e) => this.addToWishlist(e)} title={title} cover_image={cover_image}/>) ||
+      (this.props.isWishlist && <AlbumInfo isWishlist={true} removeFromWishlist={(e) => this.removeFromWishlist(e)} title={title} cover_image={cover_image}/>))
 
     // keep all logic outside of render return
     // create functions and varialbes outside and use
