@@ -1,21 +1,9 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
-// refactor api calls into seperate file
-import apiUrl from '../../apiConfig'
-
-import {index, create} from '../api'
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
-
-import ThumbInfo from './ThumbInfo'
-
-import axios from 'axios'
-
-library.add(faStroopwafel)
-
+import {index, create, destroy} from '../api'
+import AlbumInfo from './AlbumInfo'
 // import './Album.scss'
+import axios from 'axios'
 
 class Album extends Component {
   constructor (props) {
@@ -25,7 +13,8 @@ class Album extends Component {
     }
   }
 
-  onWishlist = () => {
+  addToWishlist = () => {
+    const {id, cover_image} = this.props
     const vinyl = {
       collection_type: 'wishlist',
       id,
@@ -34,6 +23,13 @@ class Album extends Component {
     create(vinyl, this.props.user)
       .then(console.log)
       .catch(console.err)
+  }
+
+  removeFromWishlist = () => {
+    destroy(this.props._id, this.props.user.token).catch(console.err)
+      .then(response => {
+        this.props.removeAlbum(this.props.id)
+      })
   }
 
   // old way to show
@@ -59,6 +55,16 @@ class Album extends Component {
 
   render () {
     const {title, cover_image} = this.props
+    const style = !(this.state.isActive) ?
+      {backgroundImage: `url('${cover_image}')`} :
+      {
+        background: `linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url('${cover_image}')`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
+      }
+    const thumbInfo = (this.state.isActive) &&
+      ((this.props.isResults && <AlbumInfo isResults={true} addToWishlist={this.addToWishlist} title={title} cover_image={cover_image}/>) ||
+      (this.props.isWishlist && <AlbumInfo isWishlist={true} removeFromWishlist={this.removeFromWishlist} title={title} cover_image={cover_image}/>))
 
     // keep all logic outside of render return
     // create functions and varialbes outside and use
@@ -70,24 +76,9 @@ class Album extends Component {
         onMouseLeave={(e) => this.onMouseLeave(e)}
         onMouseEnter={(e) => this.onMouseEnter(e)}
         className="album-thumb mb-auto m-1 display-box shadow"
-        style={!(this.state.isActive) ?
-          {backgroundImage: 'url(\'' + cover_image + '\')'} :
-          {
-            background: 'linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url(\'' + cover_image + '\')',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover'
-          }
-        }
+        style={style}
       >
-        {(this.state.isActive) && <ThumbInfo onWishlist={this.onWishlist} title={title} cover_image={cover_image}/>}
-        {/*
-          Hard-coded test album
-          <div className={(!this.state.isActive) ? 'd-none' : ''}>
-          <h6 className='mt-5 p-2 text-left text-white'>Abbey Road</h6>
-          <p className='p-2 mb-2 text-left text-white'>Abbey Road is the eleventh studio album by English rock band the Beatles, released on 26 September 1969 by Apple Records.</p>
-          <FontAwesomeIcon icon="stroopwafel" />
-        </div>
-        */}
+        {thumbInfo}
       </div>
     )
   }

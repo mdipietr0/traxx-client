@@ -2,15 +2,9 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Album from './Album'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
-
-library.add(faStroopwafel)
-
 import '../styles/AlbumsIndex.scss'
 
-class AlbumsIndex extends Component {
+class Results extends Component {
   constructor (props) {
     super (props)
     this.state = {
@@ -33,6 +27,7 @@ class AlbumsIndex extends Component {
       })
       results = results.map(result => (
         <Album
+          isResults={true}
           key={result.id}
           user={this.props.user}
           id={result.id}
@@ -42,18 +37,6 @@ class AlbumsIndex extends Component {
         />
       ))
     }
-    // const Albums = () => {
-    //   const albums = []
-    //   for (let i = 0; i < 18; i++){
-    //     albums.push(
-    //       <Album
-    //         key={i}
-    //         className="album-thumb mb-auto m-1 display-box shadow"
-    //       />
-    //     )
-    //   }
-    //   return albums
-    // }
 
     return (
       <div className="container-fluid mt-5">
@@ -65,4 +48,4 @@ class AlbumsIndex extends Component {
   }
 }
 
-export default AlbumsIndex
+export default Results

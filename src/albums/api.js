@@ -30,7 +30,7 @@ export const create =  async (vinyl, {token}) => {
   })
 }
 
-export const destroy =  async (id, {token}) => {
+export const destroy =  async (id, token) => {
   return await axios({
     method: 'delete',
     headers: {
