@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import Album from './Album'
 import {index} from '../api'
@@ -52,6 +52,7 @@ class Wishlist extends Component {
       <div className="container-fluid mt-5">
         <div className="d-flex flex-wrap justify-content-center">
           {wishlist}
+          {!this.props.user && <Redirect to='/sign-in' />}
         </div>
       </div>
     )
