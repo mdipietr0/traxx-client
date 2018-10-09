@@ -46,35 +46,13 @@ const unauthenticatedOptions = (
   </React.Fragment>
 )
 
-const SearchBar = ({query, onChangeQuery}) => (
-  <form className="form-inline my-2 my-lg-0">
-    <input
-      value={query}
-      onChange={onChangeQuery}
-      className="form-control rounded-0 btn-outline-dark"
-      type="search"
-      placeholder="Search Albums"
-      aria-label="Search"
-    />
-
-    <button className="rounded-0 btn btn-outline-dark my-2 my-sm-0" type="submit">
-      <FontAwesomeIcon
-        // onClick={}
-        title="Search"
-        color='black'
-        icon={['fas', 'search']}
-      />
-    </button>
-  </form>
-)
-
 const navbarBrand = (
   <Link to="/" className="navbar-brand">
     <img src='traxx.png' className='' width='200px;' alt='logo' />
   </Link>
 )
 
-const Header = ({ onChangeQuery, query, user }) => (
+const Header = ({ onSearch, onChangeQuery, query, user }) => (
   <header>
     <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light border border-bottom shadow-sm py-0">
       {navbarBrand}
@@ -87,7 +65,6 @@ const Header = ({ onChangeQuery, query, user }) => (
           <li className='nav-item'>
             { user && <span className='nav-link'>Welcome, {user.email}</span>}
           </li>
-          <SearchBar query={query} onChangeQuery={onChangeQuery} />
           { user ? authenticatedOptions : unauthenticatedOptions }
         </ul>
       </div>

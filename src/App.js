@@ -12,12 +12,15 @@ import ChangePassword from './auth/components/ChangePassword'
 import Results from './albums/components/Results'
 import Wishlist from './albums/components/Wishlist'
 
+import axios from 'axios'
+
 class App extends Component {
   constructor () {
     super()
 
     this.state = {
       query: '',
+      results: null,
       user: null,
       flashMessage: '',
       flashType: null
@@ -43,15 +46,32 @@ class App extends Component {
     })
   }
 
+  onSearch = async (e) => {
+    // move api call here and set state of results
+    // pass results state as prop to results
+    const {query} = this.state
+    e.preventDefault()
+    const results = await axios(`https://api.discogs.com/database/search?q=${query}&type=master&token=NcoQgYPGBIypBlMCtCHoHMAVWLIhKAMzSXKfBYan`)
+    this.setState({ results })
+  }
+
   render () {
     const { flashMessage, flashType, user } = this.state
 
     return (
       <React.Fragment>
-        <Header query={this.state.query} onChangeQuery={(e) => this.onChangeQuery(e)} user={user} />
+        <Header
+          user={user}
+        />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-        <Route path='/results' render={() => (
-          <Results query={this.state.query} user={user}/>
+        <Route path='/results' query={this.state.query} render={() => (
+          <Results
+            query={this.state.query}
+            onSearch={(e) => this.onSearch(e)}
+            onChangeQuery={(e) => this.onChangeQuery(e)}
+            results={this.state.results}
+            user={user}
+          />
         )} />
         <Route path='/wishlist' render={() => (
           <Wishlist user={user}/>
