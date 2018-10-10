@@ -41,15 +41,15 @@ class SignUp extends Component {
     const { email, password, passwordConfirmation} = this.state
 
     return (
-      <form onSubmit={this.signUp}>
+      <form className='form-container container' onSubmit={this.signUp}>
         <div className='form-group'>
-          <h3>Sign Up</h3>
+          <h3 className='text-center mt-5 p-3'>Sign Up</h3>
           <input
             required
             name='email'
             type='email'
             value={email}
-            className='form-control'
+            className='form-control rounded-0'
             id='email'
             aria-describedby='emailHelp'
             placeholder='Email'
@@ -62,7 +62,7 @@ class SignUp extends Component {
             name='password'
             type='password'
             value={password}
-            className='form-control'
+            className='form-control rounded-0'
             id='password'
             placeholder='Password'
             onChange={this.handleChange}
@@ -74,13 +74,13 @@ class SignUp extends Component {
             name='passwordConfirmation'
             type='password'
             value={passwordConfirmation}
-            className='form-control'
+            className='form-control rounded-0'
             id='passwordConfirmation'
             placeholder='Confirm Password'
             onChange={this.handleChange}
           />
         </div>
-        <button type='submit' className='btn btn-primary'>Sign Up</button>
+        <button type='submit' className='btn btn-block btn-primary rounded-0'>Sign Up</button>
       </form>
     )
   }

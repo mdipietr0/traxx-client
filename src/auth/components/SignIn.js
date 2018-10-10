@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, Link } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { signIn } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
+import '../style.scss'
 
 class SignIn extends Component {
   constructor () {
@@ -38,15 +39,15 @@ class SignIn extends Component {
     const { email, password } = this.state
 
     return (
-      <form onSubmit={this.signIn}>
+      <form className='form-container container' onSubmit={this.signIn}>
         <div className='form-group'>
-          <h3>Sign In</h3>
+          <h3 className='text-center mt-5 p-3'>Sign In</h3>
           <input
             required
             name='email'
             type='email'
             value={email}
-            className='form-control'
+            className='form-control rounded-0'
             id='email'
             aria-describedby='emailHelp'
             placeholder='Email'
@@ -59,13 +60,13 @@ class SignIn extends Component {
             name='password'
             type='password'
             value={password}
-            className='form-control'
+            className='form-control rounded-0'
             id='password'
             placeholder='Password'
             onChange={this.handleChange}
           />
         </div>
-        <button type='submit' className='btn btn-primary'>Sign In</button>
+        <button type='submit' className='btn btn-block btn-primary rounded-0'>Sign In</button>
       </form>
     )
   }
