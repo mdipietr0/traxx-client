@@ -1,5 +1,5 @@
 import React, {Fragment, Component} from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, Redirect, withRouter } from 'react-router-dom'
 import {index, create, destroy} from '../api'
 import AlbumInfo from './AlbumInfo'
 // import './Album.scss'
@@ -14,10 +14,17 @@ class Album extends Component {
     }
   }
 
+  authenticateUser = (user, history) => {
+    if (!user) {
+      history.push('/sign-in')
+      return
+    }
+  }
+
   addToWishlist = (e) => {
-    // Add error handling for add to wishlist when not signed in
+    const {history, user, id, cover_image} = this.props
     e.stopPropagation()
-    const {id, cover_image} = this.props
+
     const vinyl = {
       collection_type: 'wishlist',
       id,
@@ -29,7 +36,6 @@ class Album extends Component {
   }
 
   removeFromWishlist = (e) => {
-    // Add error handling for remove from wishlist when not signed in
     e.stopPropagation()
     destroy(this.props._id, this.props.user.token).catch(console.err)
       .then(response => {
@@ -112,4 +118,4 @@ class Album extends Component {
   }
 }
 
-export default Album
+export default withRouter(Album)
