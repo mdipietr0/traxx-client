@@ -76,6 +76,7 @@ class App extends Component {
         )}/>
         <Route path='/results' query={this.state.query} render={() => (
           <Results
+            flash={this.flash}
             query={this.state.query}
             onSearch={(e) => this.onSearch(e)}
             onChangeQuery={(e) => this.onChangeQuery(e)}
@@ -84,7 +85,7 @@ class App extends Component {
           />
         )} />
         <Route path='/wishlist' render={() => (
-          <Wishlist user={user}/>
+          <Wishlist flash={this.flash} user={user}/>
         )} />
         <Route path='/albumshow' component={AlbumShow} />
         {/* <Route path='/albumshow' render={(props) => (

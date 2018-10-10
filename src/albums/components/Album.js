@@ -2,6 +2,7 @@ import React, {Fragment, Component} from 'react'
 import { Link, Redirect, withRouter } from 'react-router-dom'
 import {index, create, destroy} from '../api'
 import AlbumInfo from './AlbumInfo'
+import messages from '../messages'
 // import './Album.scss'
 import axios from 'axios'
 
@@ -14,33 +15,37 @@ class Album extends Component {
     }
   }
 
-  authenticateUser = (user, history) => {
+  addToWishlist = async (e) => {
+    const {history, user, id, cover_image, flash} = this.props
     if (!user) {
       history.push('/sign-in')
       return
     }
-  }
-
-  addToWishlist = (e) => {
-    const {history, user, id, cover_image} = this.props
     e.stopPropagation()
-
     const vinyl = {
       collection_type: 'wishlist',
       id,
       cover_image
     }
-    create(vinyl, this.props.user)
-      .then(console.log)
-      .catch(console.err)
+    try {
+      const newRecord = await create(vinyl, this.props.user)
+      console.log(newRecord)
+      flash(messages.addToWishlistSuccess, 'alert alert-success')
+    } catch (err) {
+      console.error(err)
+      flash(messages.addToWishlistFailure, 'alert alert-danger')
+    }
   }
 
-  removeFromWishlist = (e) => {
+  removeFromWishlist = async (e) => {
     e.stopPropagation()
-    destroy(this.props._id, this.props.user.token).catch(console.err)
-      .then(response => {
-        this.props.removeAlbum(this.props.id)
-      })
+    try {
+      const response = await destroy(this.props._id, this.props.user.token)
+
+      this.props.removeAlbum(this.props.id)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   // old way to show

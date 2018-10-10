@@ -29,11 +29,13 @@ class Results extends Component {
     if(results) {
       results = results.data.results.map(result => {
         const {id, title, cover_image} = result
+
         console.log(id, title, cover_image)
         return { id, title, cover_image }
       })
       results = results.map(result => (
         <Album
+          flash={this.props.flash}
           isResults={true}
           key={result.id}
           user={this.props.user}

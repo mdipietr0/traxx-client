@@ -12,8 +12,8 @@ export const index = ({token}) => {
   })
 }
 
-export const create =  async (vinyl, {token}) => {
-  return await axios({
+export const create = (vinyl, {token}) => {
+  return axios({
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -30,8 +30,8 @@ export const create =  async (vinyl, {token}) => {
   })
 }
 
-export const destroy =  async (id, token) => {
-  return await axios({
+export const destroy = (id, token) => {
+  return axios({
     method: 'delete',
     headers: {
       'Content-Type': 'application/json',

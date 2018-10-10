@@ -35,6 +35,7 @@ class Wishlist extends Component {
       wishlist = this.state.wishlist.map(w => {
         console.log(w)
         return <Album
+          flash={this.props.flash}
           isWishlist={true}
           key={w.id}
           user={this.props.user}

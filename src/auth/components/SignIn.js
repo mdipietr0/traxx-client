@@ -30,9 +30,9 @@ class SignIn extends Component {
       .then(res => res.ok ? res : new Error())
       .then(res => res.json())
       .then(res => setUser(res.user))
-      .then(() => flash(messages.signInSuccess, 'flash-success'))
+      .then(() => flash(messages.signInSuccess, 'alert alert-success'))
       .then(() => history.push('/'))
-      .catch(() => flash(messages.signInFailure, 'flash-error'))
+      .catch(() => flash(messages.signInFailure, 'alert alert-danger'))
   }
 
   render () {
