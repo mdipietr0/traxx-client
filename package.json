@@ -1,6 +1,6 @@
 {
   "name": "traxx-client",
-  "homepage": "https://github.io/mdipietr0/traxx-client",
+  "homepage": "https://mdipietr0.github.io/traxx-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -61,7 +61,8 @@
     "test": "node scripts/test.js --env=jsdom",
     "make-standard": "eslint --fix .",
     "nag": "eslint .",
-    "deploy": "sh scripts/deploy.sh"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [
