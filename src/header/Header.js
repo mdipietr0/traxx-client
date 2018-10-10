@@ -52,10 +52,37 @@ const navbarBrand = (
   </Link>
 )
 
+const SearchBar = ({query, onChangeQuery, onSearch}) => (
+  <form className="form-inline my-2 my-lg-0">
+    <div className='mx-auto'>
+      <input
+        autoFocus
+        value={query}
+        onChange={onChangeQuery}
+        className="form-control rounded-0"
+        type="search"
+        placeholder="Search Albums"
+        aria-label="Search"
+      />
+
+      <button className="rounded-0 btn my-2 my-sm-0 btn-outline-light" type="submit">
+        <FontAwesomeIcon
+          onClick={onSearch}
+          title="Search"
+          color='black'
+          icon={['fas', 'search']}
+        />
+      </button>
+    </div>
+  </form>
+)
+
 const Header = ({ onSearch, onChangeQuery, query, user }) => (
   <header>
     <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light border border-bottom shadow-sm py-0">
       {navbarBrand}
+      <SearchBar onSearch={onSearch} query={query} onChangeQuery={onChangeQuery} />
+
       {/* TODO Implement custom collapse */}
       {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.scss'
 import { Route, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
 import Header from './header/Header'
@@ -53,7 +54,9 @@ class App extends Component {
     const {query} = this.state
     e.preventDefault()
     const results = await axios(`https://api.discogs.com/database/search?q=${query}&type=master&token=NcoQgYPGBIypBlMCtCHoHMAVWLIhKAMzSXKfBYan`)
+    console.log(results)
     this.setState({ results })
+    this.props.history.push('/results')
   }
 
   render () {
@@ -62,6 +65,9 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header
+          query={this.state.query}
+          onSearch={(e) => this.onSearch(e)}
+          onChangeQuery={(e) => this.onChangeQuery(e)}
           user={user}
         />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
@@ -101,4 +107,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withRouter(App)
