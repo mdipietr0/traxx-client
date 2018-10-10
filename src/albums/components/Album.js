@@ -70,7 +70,6 @@ class Album extends Component {
   }
 
   onClick = () => {
-    console.log('show')
     this.setState({
       redirect: true
     })
