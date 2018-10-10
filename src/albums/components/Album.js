@@ -41,16 +41,16 @@ class Album extends Component {
     e.stopPropagation()
     try {
       const response = await destroy(this.props._id, this.props.user.token)
-
       this.props.removeAlbum(this.props.id)
     } catch (err) {
       console.error(err)
+      flash(messages.removeFromWishlistFailure, 'alert alert-danger')
     }
   }
 
   // old way to show
   // onMouseEnter = (e) => e.currentTarget.children[0].classList.remove('d-none')
-
+  //
   // React way to show element onMouseOver
   onMouseEnter = (e) => {
     e.stopPropagation()
@@ -61,30 +61,23 @@ class Album extends Component {
 
   // old way to hide
   // onMouseLeave = (e) => e.currentTarget.children[0].classList.add('d-none')
-
+  //
   // React way to hide element onMouseOut
   onMouseLeave = (e) => {
+    e.stopPropagation()
     this.setState((state, props) => ({
       isActive: false
     }))
   }
 
-  onClick = () => {
-    this.setState({
-      redirect: true
+  showAlbum = (e) => {
+    this.props.history.push({
+      pathname: '/albumshow',
+      state: {
+        id: this.props.id,
+        cover_image: this.props.cover_image
+      }
     })
-  }
-
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to={{
-        pathname: '/albumshow',
-        state: {
-          id: this.props.id,
-          cover_image: this.props.cover_image
-        }
-      }}/>
-    }
   }
 
   render () {
@@ -103,21 +96,18 @@ class Album extends Component {
     // keep all logic outside of render return
     // create functions and varialbes outside and use
     return (
-      <Fragment>
-        {this.renderRedirect()}
-        <div
-          onClick={this.onClick}
-          // use onMouseLeave and onMouseEnter instead of onMouseOver and onMouseOut
-          // because the former only get called once while the latter will get called
-          // when moving between descendants also. TLDR; fixes repeated firing
-          onMouseLeave={(e) => this.onMouseLeave(e)}
-          onMouseEnter={(e) => this.onMouseEnter(e)}
-          className="album-thumb mb-auto m-1 display-box shadow"
-          style={style}
-        >
-          {thumbInfo}
-        </div>
-      </Fragment>
+      <div
+        onClick={this.showAlbum}
+        // use onMouseLeave and onMouseEnter instead of onMouseOver and onMouseOut
+        // because the former only get called once while the latter will get called
+        // when moving between descendants also. TLDR; fixes repeated firing
+        onMouseLeave={(e) => this.onMouseLeave(e)}
+        onMouseEnter={(e) => this.onMouseEnter(e)}
+        className="album-thumb mb-auto m-1 display-box shadow"
+        style={style}
+      >
+        {thumbInfo}
+      </div>
     )
   }
 }
