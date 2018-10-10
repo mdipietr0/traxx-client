@@ -69,7 +69,7 @@ class Results extends Component {
     //     </div>
     //   </form>
     // )
-    // 
+    //
     // const {onSearch, query, onChangeQuery} = this.props
 
     return (

@@ -71,6 +71,9 @@ class App extends Component {
           user={user}
         />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
+        <Route path='/' render={() => (
+          <h1 className='text-center'>Landing Page</h1>
+        )}/>
         <Route path='/results' query={this.state.query} render={() => (
           <Results
             query={this.state.query}
