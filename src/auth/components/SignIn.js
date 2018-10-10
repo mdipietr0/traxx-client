@@ -66,7 +66,7 @@ class SignIn extends Component {
             onChange={this.handleChange}
           />
         </div>
-        <button type='submit' className='btn btn-block btn-primary rounded-0'>Sign In</button>
+        <button type='submit' className='btn btn-block btn-primary rounded-0 bg-white text-primary'>Sign In</button>
       </form>
     )
   }

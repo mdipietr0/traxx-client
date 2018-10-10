@@ -1,7 +1,17 @@
+
+
 $success: #c7f282;
 $warning: #f1e681;
 $error: #f08181;
 $charcoal: #ccc;
+
+$theme-colors: (
+  primary: #41b3a3,
+  success: #87cdca,
+  danger: #ff4136
+);
+@import 'node_modules/bootstrap/scss/bootstrap';
+
 
 .flash-success,
 .flash-warning,
