@@ -60,15 +60,11 @@ decided that the benefits of using only one language for both the client and
 server outweighed the other factors. An ExpressJS app was built on Node using
 mongoDB to keep the resources.
 
-// Outline React File structure based on resources REST
-
-// More about planning and process
 ## Wireframes
-![Wireframe1](https://i.imgur.com/7o02CGE.png)
-![Wireframe2](https://i.imgur.com/AwISyEt.png)
+![Wireframe](https://i.imgur.com/Yrz7TdG.png)
 
 ## ERD
-[ERD](https://i.imgur.com/XGiTXjm.png)
+![ERD](https://i.imgur.com/XGiTXjm.png)
 
 ## User Stories:
   - A user will be able to register an account
