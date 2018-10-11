@@ -24,13 +24,13 @@ class AlbumInfo extends Component {
           color='white'
           icon={['fas', 'plus-circle']}
         />
-        <FontAwesomeIcon
+        {/* <FontAwesomeIcon
           onClick={this.addToFavorites}
           className='icon-wrapper px-1'
           title="Add to favorites"
           color='white'
           icon={['fas', 'heart']}
-        />
+        /> */}
       </Fragment>) ||
       this.props.isWishlist &&
       <FontAwesomeIcon
