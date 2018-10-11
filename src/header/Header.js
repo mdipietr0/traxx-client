@@ -53,7 +53,7 @@ const navbarBrand = (
 )
 
 const SearchBar = ({query, onChangeQuery, onSearch}) => (
-  <form className="form-inline my-2 my-lg-0">
+  <form onSubmit={onSearch} className="form-inline my-2 my-lg-0">
     <div className='mx-auto'>
       <input
         autoFocus
@@ -67,7 +67,6 @@ const SearchBar = ({query, onChangeQuery, onSearch}) => (
 
       <button className="rounded-0 btn my-2 my-sm-0 btn-outline-light" type="submit">
         <FontAwesomeIcon
-          onClick={onSearch}
           title="Search"
           color='black'
           icon={['fas', 'search']}
