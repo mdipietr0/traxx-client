@@ -43,7 +43,7 @@ class MailerForm extends Component {
 
   sendMailer = async (e) => {
     e.preventDefault()
-    const { user } = this.props
+    const { user, flash } = this.props
     const { wishlist } = this.props.location.state
     const wishlistElement = wishlist.map(item => {
       return `
@@ -56,12 +56,12 @@ class MailerForm extends Component {
     })
     const { to, from, subject, html } = this.state
     const mail = { from, to, subject, html }
-    console.log(mail)
     mailer(mail, user)
+      .then(() => flash(messages.wishlistShareSuccess, 'alert alert-success'))
+      .catch(() => flash(messages.wishlistShareFailure, 'alert alert-danger'))
   }
 
   render () {
-
     const {to, subject} = this.state
     return (
       <form className='form-container container' onSubmit={(e) => this.sendMailer(e)}>
