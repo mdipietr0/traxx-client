@@ -67,6 +67,9 @@ mongoDB to keep the resources.
 ![Wireframe1](https://i.imgur.com/7o02CGE.png)
 ![Wireframe2](https://i.imgur.com/AwISyEt.png)
 
+## ERD
+[ERD](https://i.imgur.com/XGiTXjm.png)
+
 ## User Stories:
   - A user will be able to register an account
     - Upon success the user will also be signed in
@@ -90,3 +93,13 @@ mongoDB to keep the resources.
   - A user will be able to delete a reecord from their collection
 
 ## Version 2 (Currently developing):
+
+## Installation Instructions:
+API
+1. Install dependencies with ``npm install``
+2. From the root , run the following commands. They will set a SECRET_KEY for development and testing.
+``echo SECRET_KEY_BASE_TEST=$(openssl rand -base64 66 | tr -d '\n') >> .env``
+``echo SECRET_KEY_BASE_DEVELOPMENT=$(openssl rand -base64 66 | tr -d '\n') >> .env``
+
+Client
+1. Install dependencies with ``npm install``
