@@ -16,12 +16,12 @@ class Album extends Component {
   }
 
   addToWishlist = async (e) => {
+    e.stopPropagation()
     const {history, user, id, cover_image, flash} = this.props
     if (!user) {
       history.push('/sign-in')
       return
     }
-    e.stopPropagation()
     const vinyl = {
       collection_type: 'wishlist',
       id,

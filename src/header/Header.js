@@ -61,7 +61,7 @@ const SearchBar = ({query, onChangeQuery, onSearch}) => (
         onChange={onChangeQuery}
         className="form-control rounded-0"
         type="search"
-        placeholder="Search Albums"
+        placeholder="Search"
         aria-label="Search"
       />
 
