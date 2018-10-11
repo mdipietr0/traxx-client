@@ -40,3 +40,22 @@ export const destroy = (id, token) => {
     url: `${apiUrl}/vinyls/${id}`
   })
 }
+
+export const mailer = (mail, {token}) => {
+  return axios({
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization':`Token token=${token}`
+    },
+    url: `${apiUrl}/mailer`,
+    data: JSON.stringify({
+      mail: {
+        from: mail.from,
+        to: mail.to,
+        subject: mail.subject,
+        html: mail.html
+      }
+    })
+  })
+}

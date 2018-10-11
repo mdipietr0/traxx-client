@@ -4,6 +4,7 @@ import axios from 'axios'
 import Album from './Album'
 import {index} from '../api'
 import '../styles/AlbumsIndex.scss'
+import { mailer } from '../api'
 
 class Wishlist extends Component {
   constructor (props) {
@@ -27,6 +28,16 @@ class Wishlist extends Component {
     this.setState((state, props) => ({
       wishlist: state.wishlist.filter(album => album.id !== id)
     }))
+  }
+
+  sendMailer = () => {
+    const tempMail = {
+      from: 'traxx',
+      to: 'alissapifer@gmail.com',
+      subject: 'baby steps',
+      html: '<h1>test 2</h1>'
+    }
+    mailer(tempMail, this.props.user)
   }
 
   render () {
@@ -53,6 +64,7 @@ class Wishlist extends Component {
       <div className="container-fluid mt-5">
         <div className="d-flex flex-wrap justify-content-center">
           {wishlist}
+          <button onClick={this.sendMailer}>Share</button>
           {!this.props.user && <Redirect to='/sign-in' />}
         </div>
       </div>
