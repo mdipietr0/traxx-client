@@ -91,7 +91,8 @@ class Album extends Component {
       }
     const thumbInfo = (this.state.isActive) &&
       ((this.props.isResults && <AlbumInfo isResults={true} addToWishlist={(e) => this.addToWishlist(e)} title={title} cover_image={cover_image}/>) ||
-      (this.props.isWishlist && <AlbumInfo isWishlist={true} removeFromWishlist={(e) => this.removeFromWishlist(e)} title={title} cover_image={cover_image}/>))
+      (this.props.isWishlist && <AlbumInfo isWishlist={true} removeFromWishlist={(e) => this.removeFromWishlist(e)} title={title} cover_image={cover_image}/>) ||
+      <AlbumInfo title={title} cover_image={cover_image} />)
 
     // keep all logic outside of render return
     // create functions and varialbes outside and use

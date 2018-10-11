@@ -13,6 +13,7 @@ import ChangePassword from './auth/components/ChangePassword'
 import Results from './albums/components/Results'
 import Wishlist from './albums/components/Wishlist'
 import AlbumShow from './albums/components/AlbumShow'
+import MailerForm from './albums/components/MailerForm'
 
 import axios from 'axios'
 
@@ -86,6 +87,9 @@ class App extends Component {
         )} />
         <Route path='/wishlist' render={() => (
           <Wishlist flash={this.flash} user={user}/>
+        )} />
+        <Route path='/mailerform' render={() => (
+          <MailerForm flash={this.flash} user={user}/>
         )} />
         <Route path='/albumshow' component={AlbumShow} />
         {/* <Route path='/albumshow' render={(props) => (

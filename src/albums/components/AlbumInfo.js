@@ -39,7 +39,7 @@ class AlbumInfo extends Component {
         title="Remove from wishlist"
         color='white'
         icon={['fas', 'minus-circle']}
-      />
+      /> || ''
 
     return (
       <Fragment>

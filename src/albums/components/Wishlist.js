@@ -1,10 +1,16 @@
 import React, {Component} from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, Redirect, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import Album from './Album'
 import {index} from '../api'
 import '../styles/AlbumsIndex.scss'
 import { mailer } from '../api'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faEnvelope)
+
 
 class Wishlist extends Component {
   constructor (props) {
@@ -31,13 +37,12 @@ class Wishlist extends Component {
   }
 
   sendMailer = () => {
-    const tempMail = {
-      from: 'traxx',
-      to: 'alissapifer@gmail.com',
-      subject: 'baby steps',
-      html: '<h1>test 2</h1>'
-    }
-    mailer(tempMail, this.props.user)
+    const { history } = this.props
+    const { wishlist } = this.state
+    history.push({
+      pathname: '/mailerform',
+      state: { wishlist }
+    })
   }
 
   render () {
@@ -61,10 +66,20 @@ class Wishlist extends Component {
     }
 
     return (
-      <div className="container-fluid mt-5">
+      <div className="container-fluid mt-2">
+        <div className='row'>
+          <div className='ml-auto pb-2 mr-5 mt-0'>
+            <FontAwesomeIcon
+              onClick={this.sendMailer}
+              className='icon-wrapper px-1'
+              title="Share via email"
+              color='black'
+              icon={['fas', 'envelope']}
+            />
+          </div>
+        </div>
         <div className="d-flex flex-wrap justify-content-center">
           {wishlist}
-          <button onClick={this.sendMailer}>Share</button>
           {!this.props.user && <Redirect to='/sign-in' />}
         </div>
       </div>
@@ -72,4 +87,4 @@ class Wishlist extends Component {
   }
 }
 
-export default Wishlist
+export default withRouter(Wishlist)
