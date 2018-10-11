@@ -1,5 +1,5 @@
 
-# Traxx (discographic)(client)
+# Traxx (discographic)
 Traxx is a discographic music searching and album collection client application.
 Users can search from a database containing over 10M records from over 5M
 artists. It is a single page application (SPA) built with ReactJS that interfaces
