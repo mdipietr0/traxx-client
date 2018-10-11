@@ -14,6 +14,7 @@ import Results from './albums/components/Results'
 import Wishlist from './albums/components/Wishlist'
 import AlbumShow from './albums/components/AlbumShow'
 import MailerForm from './albums/components/MailerForm'
+import LandingPage from './albums/components/LandingPage'
 
 import axios from 'axios'
 
@@ -72,9 +73,9 @@ class App extends Component {
           user={user}
         />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-        <Route exact path='/' render={() => (
+        {/* <Route exact path='/' render={() => (
           <h1 className='text-center'>Landing Page</h1>
-        )}/>
+        )}/> */}
         <Route path='/results' query={this.state.query} render={() => (
           <Results
             flash={this.flash}
@@ -90,6 +91,9 @@ class App extends Component {
         )} />
         <Route path='/mailerform' render={() => (
           <MailerForm flash={this.flash} user={user}/>
+        )} />
+        <Route exact path='/' render={() => (
+          <LandingPage flash={this.flash} user={user}/>
         )} />
         <Route path='/albumshow' component={AlbumShow} />
         {/* <Route path='/albumshow' render={(props) => (
