@@ -4,21 +4,40 @@ Traxx is a discographic music searching and album collection client application.
 Users can search from a database containing over 10M records from over 5M
 artists. It is a single page application (SPA) built with ReactJS that interfaces
 with an ExpressJS backend API using axios.
-https://mdipietr0.github.io/traxx-client/
 
-Link to the API:
+## Screenshot
+![Traxx](https://i.imgur.com/03Np4dA.png)
 
+Link to the client repo:
+https://github.com/mdipietr0/traxx-client
+
+Link to the client app:
+https://mdipietr0.github.io/traxx-client/#/
+
+Link to the API repo:
+https://github.com/mdipietr0/traxx-api
+
+Link to the API endpoint:
+https://protected-sands-90386.herokuapp.com
 
 ## Technologies Used:
 
-- ReactJS (w/ JSX, React Router, )
+### Client
+- ReactJS (w/ JSX, React Router)
+- JavaScript
 - Axios (HTTP library)
 - Discogs third-party API
-- Font Awesome (react-fontawesome package)
 - HTML/CSS
 - Bootstrap 4
-- JavaScript
+- Font Awesome (react-fontawesome package)
 - Git
+
+### API
+- ExpressJS
+- Node
+- JavaScript
+- nodemailer package
+- git
 
 ## Planning and Development process:
 
@@ -41,11 +60,10 @@ decided that the benefits of using only one language for both the client and
 server outweighed the other factors. An ExpressJS app was built on Node using
 mongoDB to keep the resources.
 
-
 // Outline React File structure based on resources REST
 
 // More about planning and process
-
+## Wireframes
 ![Wireframe1](https://i.imgur.com/7o02CGE.png)
 ![Wireframe2](https://i.imgur.com/AwISyEt.png)
 
@@ -68,8 +86,6 @@ mongoDB to keep the resources.
   - A user will be able to add record to their collection
   - A user will be able to view the records in their wishlist
   - A user will be able to view the records in their collection
-  - ***** NOT NEEDED ***** A user will be able to update their wishlist
-  - ***** NOT NEEDED ***** A user will be able to update their collection
   - A user will be able to delete a record from their wishlist
   - A user will be able to delete a reecord from their collection
 
