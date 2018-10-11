@@ -14,10 +14,8 @@ class LandingPage extends Component {
   }
   componentDidMount = async () => {
     const year = (new Date()).getYear() + 1900
-    console.log(year)
     const query = ''
     let results = await axios(`https://api.discogs.com/database/search?q=${query}&type=master&year=${year}&token=NcoQgYPGBIypBlMCtCHoHMAVWLIhKAMzSXKfBYan`)
-    console.log(results.data.results)
     // await this.setState({ results })
     results = results.data.results
       .filter(album => !album.cover_image.includes('spacer.gif'))

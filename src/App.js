@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Fragment, Component } from 'react'
+
 import './App.scss'
-import { Route, Link } from 'react-router-dom'
-import { withRouter } from 'react-router-dom'
+
+import { Route, Link, withRouter } from 'react-router-dom'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
 import Header from './header/Header'
@@ -17,6 +18,8 @@ import MailerForm from './albums/components/MailerForm'
 import LandingPage from './albums/components/LandingPage'
 
 import axios from 'axios'
+
+
 
 class App extends Component {
   constructor () {
@@ -41,22 +44,15 @@ class App extends Component {
     clearTimeout(this.messageTimeout)
 
     this.messageTimeout = setTimeout(() => this.setState({flashMessage: null
-    }), 2000)
+    }), 1000)
   }
 
-  onChangeQuery = (e) => {
-    this.setState({
-      query: e.target.value
-    })
-  }
+  onChangeQuery = (e) => this.setState({ query: e.target.value })
 
   onSearch = async (e) => {
-    // move api call here and set state of results
-    // pass results state as prop to results
-    const {query} = this.state
     e.preventDefault()
+    const {query} = this.state
     const results = await axios(`https://api.discogs.com/database/search?q=${query}&type=master&token=NcoQgYPGBIypBlMCtCHoHMAVWLIhKAMzSXKfBYan`)
-    console.log(results)
     this.setState({ results })
     this.props.history.push('/results')
   }
@@ -65,7 +61,7 @@ class App extends Component {
     const { flashMessage, flashType, user } = this.state
 
     return (
-      <React.Fragment>
+      <Fragment>
         <Header
           query={this.state.query}
           onSearch={(e) => this.onSearch(e)}
@@ -73,9 +69,6 @@ class App extends Component {
           user={user}
         />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-        {/* <Route exact path='/' render={() => (
-          <h1 className='text-center'>Landing Page</h1>
-        )}/> */}
         <Route path='/results' query={this.state.query} render={() => (
           <Results
             flash={this.flash}
@@ -96,10 +89,6 @@ class App extends Component {
           <LandingPage flash={this.flash} user={user}/>
         )} />
         <Route path='/albumshow' component={AlbumShow} />
-        {/* <Route path='/albumshow' render={(props) => (
-          <AlbumShow
-            user={user}/>
-        )} /> */}
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />
@@ -114,7 +103,7 @@ class App extends Component {
             <ChangePassword flash={this.flash} user={user} />
           )} />
         </main>
-      </React.Fragment>
+      </Fragment>
     )
   }
 }

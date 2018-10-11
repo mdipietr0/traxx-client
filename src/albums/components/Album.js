@@ -29,10 +29,8 @@ class Album extends Component {
     }
     try {
       const newRecord = await create(vinyl, this.props.user)
-      console.log(newRecord)
       flash(messages.addToWishlistSuccess, 'alert alert-success')
     } catch (err) {
-      console.error(err)
       flash(messages.addToWishlistFailure, 'alert alert-danger')
     }
   }
@@ -43,15 +41,10 @@ class Album extends Component {
       const response = await destroy(this.props._id, this.props.user.token)
       this.props.removeAlbum(this.props.id)
     } catch (err) {
-      console.error(err)
       flash(messages.removeFromWishlistFailure, 'alert alert-danger')
     }
   }
 
-  // old way to show
-  // onMouseEnter = (e) => e.currentTarget.children[0].classList.remove('d-none')
-  //
-  // React way to show element onMouseOver
   onMouseEnter = (e) => {
     e.stopPropagation()
     this.setState((state, props) => ({
@@ -59,10 +52,6 @@ class Album extends Component {
     }))
   }
 
-  // old way to hide
-  // onMouseLeave = (e) => e.currentTarget.children[0].classList.add('d-none')
-  //
-  // React way to hide element onMouseOut
   onMouseLeave = (e) => {
     e.stopPropagation()
     this.setState((state, props) => ({
