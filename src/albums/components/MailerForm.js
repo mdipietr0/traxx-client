@@ -55,7 +55,7 @@ class MailerForm extends Component {
     const { wishlist } = this.props.location.state
     const wishlistElement = wishlist.map(item => {
       return `
-        <img src=${item.cover_image} />
+        <a href='https://mdipietr0.github.io/traxx-client/#/'><img src=${item.cover_image} /></a>
         <h2>${item.title}</h2>
         `
     })
