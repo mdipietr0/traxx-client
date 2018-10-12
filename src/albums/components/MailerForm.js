@@ -41,6 +41,14 @@ class MailerForm extends Component {
       `
   }
 
+  handleError = res => {
+    if (res.status !== 201) {
+      throw new Error()
+    } else {
+      return res
+    }
+  }
+
   sendMailer = async (e) => {
     e.preventDefault()
     const { user, flash } = this.props
@@ -57,6 +65,7 @@ class MailerForm extends Component {
     const { to, from, subject, html } = this.state
     const mail = { from, to, subject, html }
     mailer(mail, user)
+      .then(this.handleError)
       .then(() => flash(messages.wishlistShareSuccess, 'alert alert-success'))
       .catch(() => flash(messages.wishlistShareFailure, 'alert alert-danger'))
   }
