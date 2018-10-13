@@ -1,12 +1,9 @@
-$success: #c7f282;
-$warning: #f1e681;
-$error: #f08181;
-$charcoal: #ccc;
-
+// override bootstrap theme colors before importing bootstrap 
 $theme-colors: (
-  primary: #41b3a3,
-  success: #87cdca,
-  danger: #ff4136
+  primary: #84cdca,
+  secondary: #e8a87c,
+  success: #41b3a3,
+  danger: #e27d60
 );
 
 @import 'node_modules/bootstrap/scss/bootstrap';
