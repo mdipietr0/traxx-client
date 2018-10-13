@@ -1,8 +1,9 @@
 @import '../App.scss';
 
+.nav-link:hover,
 .nav-link:active,
 .nav-link:focus {
-  border-bottom: solid 2px theme-color('secondary');
+  border-bottom: solid 4px theme-color('secondary');
 }
 
 .btn:focus,.btn:active:focus,.btn.active:focus,
