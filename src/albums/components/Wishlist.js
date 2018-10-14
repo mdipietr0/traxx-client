@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Link, Redirect, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import Album from './Album'
+import Loading from './Loading'
 import {index} from '../api'
 import '../styles/AlbumsIndex.scss'
 import { mailer } from '../api'
@@ -63,6 +64,8 @@ class Wishlist extends Component {
           removeAlbum={this.removeAlbum}
         />
       })
+    } else {
+      wishlist = <Loading />
     }
 
     return (

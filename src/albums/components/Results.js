@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Album from './Album'
+import Loading from './Loading'
 import '../styles/AlbumsIndex.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -40,7 +41,7 @@ class Results extends Component {
     return (
       <div className="container-fluid mt-5">
         <div className="d-flex flex-wrap justify-content-center">
-          {results}
+          {results} || <Loading />
         </div>
       </div>
     )

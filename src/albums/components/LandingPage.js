@@ -3,6 +3,7 @@ import { Link, Redirect, withRouter } from 'react-router-dom'
 import {index, create, destroy, mailer} from '../api'
 import messages from '../messages'
 import Album from './Album'
+import Loading from './Loading'
 import axios from 'axios'
 
 class LandingPage extends Component {
@@ -40,6 +41,7 @@ class LandingPage extends Component {
   }
 
   render () {
+    const content = this.state.results || <Loading />
     return (
       // <div className='container'>
       //   <h1>Landing Page</h1>
@@ -48,7 +50,7 @@ class LandingPage extends Component {
       <div className="container-fluid mt-5">
         <h4 className='mx-5'>New Releases</h4>
         <div className="d-flex flex-wrap justify-content-center">
-          {this.state.results}
+          {content}
         </div>
       </div>
     )

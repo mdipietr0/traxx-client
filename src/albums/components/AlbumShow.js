@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import {index, create, destroy} from '../api'
 import AlbumInfo from './AlbumInfo'
+import Loading from './Loading'
 // import './Album.scss'
 import axios from 'axios'
 
@@ -62,7 +63,7 @@ class AlbumShow extends Component {
           <ul className="list-group list-group-flush bg-light">{this.renderTracklist()}</ul>
         </div>
       ) : (
-        <h5> loading </h5>
+        <Loading />
       )
     return display
   }
