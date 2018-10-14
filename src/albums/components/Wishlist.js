@@ -71,7 +71,7 @@ class Wishlist extends Component {
           <div className='ml-auto pb-2 mr-5 mt-0'>
             <FontAwesomeIcon
               onClick={this.sendMailer}
-              className='icon-wrapper px-1'
+              className='icon-wrapper icon-wrapper-black px-1'
               title="Share via email"
               color='black'
               icon={['fas', 'envelope']}
