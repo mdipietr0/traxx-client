@@ -64,7 +64,8 @@ class Album extends Component {
       pathname: '/albumshow',
       state: {
         id: this.props.id,
-        cover_image: this.props.cover_image
+        cover_image: this.props.cover_image,
+        addToWishlist: this.addToWishlist
       }
     })
   }

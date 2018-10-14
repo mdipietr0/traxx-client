@@ -1,6 +1,7 @@
-@import '../../App.scss';
+@import '../../App';
 
 .icon-wrapper {
+  color: $white;
   font-size: 2.5em;
 
   &:hover {
@@ -24,8 +25,13 @@
 
 .icon-wrapper-black {
   border-color: theme-color('light');
+  color: $black;
 
   &:hover {
     border: solid 2px theme-color('light');
   }
+}
+
+.icon-wrapper-success {
+  color: theme-color('success');
 }

@@ -1,10 +1,16 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import {index, create, destroy} from '../api'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+
 import AlbumInfo from './AlbumInfo'
 import Loading from './Loading'
 // import './Album.scss'
 import axios from 'axios'
+
+library.add(faHeart)
 
 class AlbumShow extends Component {
   constructor (props) {
@@ -58,6 +64,15 @@ class AlbumShow extends Component {
               <h2 className='m-3'>{this.state.results.data.title}</h2>
               <h5 className='m-3'>By {this.state.results.data.artists[0].name}</h5>
               <h5 className='m-3'>Released {this.state.results.data.year}</h5>
+              {/* Add to wishlist works but need to refactor page to allow
+                access from wishlist page as well as results page. PAge will
+                need to change based on if it is wishlist or not */}
+              {/* <FontAwesomeIcon
+                onClick={this.props.location.state.addToWishlist}
+                className='m-3 icon-wrapper icon-wrapper-black px-1'
+                title="Add to wishlist"
+                icon={['fas', 'heart']}
+              /> */}
             </div>
           </div>
           <ul className="list-group list-group-flush bg-light">{this.renderTracklist()}</ul>
