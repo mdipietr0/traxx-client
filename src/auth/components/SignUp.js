@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, NavLink } from 'react-router-dom'
 
 import { handleErrors, signUp, signIn } from '../api'
 import messages from '../messages'
@@ -81,6 +81,7 @@ class SignUp extends Component {
           />
         </div>
         <button type='submit' className='btn btn-block btn-primary rounded-0 bg-white text-primary'>Sign Up</button>
+        <p className='text-center p-2'>Already a member? <NavLink to='/sign-in'>Log in</NavLink>.</p>
       </form>
     )
   }
