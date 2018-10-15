@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import {index, create, destroy} from '../api'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -48,7 +48,6 @@ class AlbumShow extends Component {
 
 
   render () {
-    (this.state.results) && console.log(this.state.results.data)
     const display = (this.state.results) ?
       (
         <div className='container'>
@@ -78,7 +77,7 @@ class AlbumShow extends Component {
           <ul className="list-group list-group-flush bg-light">{this.renderTracklist()}</ul>
         </div>
       ) : (
-        <Loading />
+        this.props.location.state ? <Loading /> : <Redirect to='/' />
       )
     return display
   }
