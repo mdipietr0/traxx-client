@@ -48,9 +48,12 @@ class Wishlist extends Component {
 
   render () {
     let wishlist
-    if (this.state.wishlist) {
+    // if this.state.wishlist === undefined => render Loading
+    // else if this.state.wishlist !== undefined
+    //      && this.state.wishlist.length > 0 => render Wishlist
+    // else => render emapty list message
+    if (this.state.wishlist && this.state.wishlist.length > 0) {
       wishlist = this.state.wishlist.map(w => {
-        console.log(w)
         return <Album
           flash={this.props.flash}
           isWishlist={true}
@@ -64,8 +67,15 @@ class Wishlist extends Component {
           removeAlbum={this.removeAlbum}
         />
       })
-    } else {
+    } else if (!this.state.wishlist) {
       wishlist = <Loading />
+    } else {
+      wishlist = (
+        <div className='text-center'>
+          <h4>Wishlist is empty!</h4>
+          <p>Search for albums to add to your wishlist.</p>
+        </div>
+      )
     }
 
     return (
@@ -82,8 +92,8 @@ class Wishlist extends Component {
           </div>
         </div>
         <div className="d-flex flex-wrap justify-content-center">
-          {wishlist}
           {!this.props.user && <Redirect to='/sign-in' />}
+          {wishlist}
         </div>
       </div>
     )
