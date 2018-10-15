@@ -36,7 +36,7 @@ class ChangePassword extends Component {
     const { oldPassword, newPassword } = this.state
 
     return (
-      <form className='form-container container' onSubmit={this.changePassword}>
+      <form className='form-container container col-md-4' onSubmit={this.changePassword}>
         <h3 className='text-center mt-5 p-3'>Change Password</h3>
         <div className='form-group'>
           <input
