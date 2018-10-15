@@ -72,7 +72,7 @@ class MailerForm extends Component {
 
   render () {
     const {to, subject} = this.state
-    return (
+    const mailerForm = (
       <form className='form-container container' onSubmit={(e) => this.sendMailer(e)}>
         <div className='form-group'>
           <h3 className='text-center mt-5 p-3'>Share Wishlist</h3>
@@ -104,6 +104,7 @@ class MailerForm extends Component {
         <button type='submit' className='btn btn-block btn-primary rounded-0 bg-white text-primary'>Share</button>
       </form>
     )
+    return this.props.location.state ? mailerForm : <Redirect to='/' />
   }
 }
 
