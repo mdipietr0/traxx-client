@@ -48,10 +48,6 @@ class Wishlist extends Component {
 
   render () {
     let wishlist
-    // if this.state.wishlist === undefined => render Loading
-    // else if this.state.wishlist !== undefined
-    //      && this.state.wishlist.length > 0 => render Wishlist
-    // else => render emapty list message
     if (this.state.wishlist && this.state.wishlist.length > 0) {
       wishlist = this.state.wishlist.map(w => {
         return <Album
@@ -78,17 +74,21 @@ class Wishlist extends Component {
       )
     }
 
+    const shareEmail = (this.state.wishlist &&
+    this.state.wishlist.length > 0) ?
+      <FontAwesomeIcon
+        onClick={this.sendMailer}
+        className='icon-wrapper icon-wrapper-black px-1'
+        title="Share via email"
+        color='black'
+        icon={['fas', 'envelope']}
+      /> : ''
+
     return (
       <div className="container-fluid mt-2">
         <div className='row'>
           <div className='ml-auto pb-2 mr-5 mt-0'>
-            <FontAwesomeIcon
-              onClick={this.sendMailer}
-              className='icon-wrapper icon-wrapper-black px-1'
-              title="Share via email"
-              color='black'
-              icon={['fas', 'envelope']}
-            />
+            {shareEmail}
           </div>
         </div>
         <div className="d-flex flex-wrap justify-content-center">
