@@ -41,7 +41,7 @@ class SignUp extends Component {
     const { email, password, passwordConfirmation} = this.state
 
     return (
-      <form className='form-container container' onSubmit={this.signUp}>
+      <form className='form-container container col-md-4' onSubmit={this.signUp}>
         <div className='form-group'>
           <h3 className='text-center mt-5 p-3'>Sign Up</h3>
           <input

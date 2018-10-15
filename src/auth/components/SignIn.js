@@ -39,7 +39,7 @@ class SignIn extends Component {
     const { email, password } = this.state
 
     return (
-      <form className='form-container container' onSubmit={this.signIn}>
+      <form className='form-container container col-md-4' onSubmit={this.signIn}>
         <div className='form-group'>
           <h3 className='text-center mt-5 p-3'>Sign In</h3>
           <input
