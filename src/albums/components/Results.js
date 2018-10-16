@@ -1,51 +1,32 @@
-import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
+import React from 'react'
 import Album from './Album'
 import Loading from './Loading'
 import '../styles/AlbumsIndex.scss'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-library.add(faSearch)
 
-class Results extends Component {
-  constructor (props) {
-    super (props)
-    this.state = {
-      results: null
-    }
-  }
+const Results = (props) => {
+  let { results } = props
+  const { flash, isLoading } = props
+  results = (!isLoading && results) && results.data.results
+    .map(({ id, title, cover_image }) => (
+      <Album
+        flash={props.flash}
+        isResults={true}
+        key={id}
+        user={props.user}
+        id={id}
+        title={title}
+        cover_image={cover_image}
+        className='album-thumb mb-auto m-1 display-box shadow'
+      />
+    ))
 
-  render () {
-    let {results} = this.props
-    if(results) {
-      results = results.data.results.map(result => {
-        const {id, title, cover_image} = result
-        return { id, title, cover_image }
-      })
-      results = results.map(result => (
-        <Album
-          flash={this.props.flash}
-          isResults={true}
-          key={result.id}
-          user={this.props.user}
-          id={result.id}
-          title={result.title}
-          cover_image={result.cover_image}
-          className='album-thumb mb-auto m-1 display-box shadow'
-        />
-      ))
-    }
-
-    return (
-      <div className="container-fluid mt-5">
-        <div className="d-flex flex-wrap justify-content-center">
-          {results} || <Loading />
-        </div>
+  return (
+    <div className="container-fluid mt-5">
+      <div className="d-flex flex-wrap justify-content-center">
+        {(!isLoading) ? results : <Loading />}
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Results

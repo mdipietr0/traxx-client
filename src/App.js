@@ -30,7 +30,8 @@ class App extends Component {
       results: null,
       user: null,
       flashMessage: '',
-      flashType: null
+      flashType: null,
+      isLoading: false
     }
   }
 
@@ -52,8 +53,14 @@ class App extends Component {
   onSearch = async (e) => {
     e.preventDefault()
     const {query} = this.state
+    this.setState({
+      isLoading: true
+    }, () => console.log(this.state.results))
     const results = await axios(`https://api.discogs.com/database/search?q=${query}&type=master&token=NcoQgYPGBIypBlMCtCHoHMAVWLIhKAMzSXKfBYan`)
-    this.setState({ results })
+    this.setState({
+      results,
+      isLoading: false
+    }, () => console.log(this.state.results))
     this.props.history.push('/results')
   }
 
@@ -71,6 +78,7 @@ class App extends Component {
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
         <Route path='/results' query={this.state.query} render={() => (
           <Results
+            isLoading={this.state.isLoading}
             flash={this.flash}
             query={this.state.query}
             onSearch={(e) => this.onSearch(e)}
