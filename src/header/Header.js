@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 library.add(faSearch)
 
-import './Header.scss'
+import './Navbar.scss'
 
 const authenticatedOptions = (
   <React.Fragment>
