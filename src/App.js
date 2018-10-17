@@ -6,6 +6,7 @@ import { Route, Link, withRouter } from 'react-router-dom'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
 import Header from './header/Header'
+import NavBar from './header/Navbar.js'
 import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
@@ -69,7 +70,13 @@ class App extends Component {
 
     return (
       <Fragment>
-        <Header
+        {/* <Header
+          query={this.state.query}
+          onSearch={(e) => this.onSearch(e)}
+          onChangeQuery={(e) => this.onChangeQuery(e)}
+          user={user}
+        /> */}
+        <NavBar
           query={this.state.query}
           onSearch={(e) => this.onSearch(e)}
           onChangeQuery={(e) => this.onChangeQuery(e)}
