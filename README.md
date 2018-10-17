@@ -60,6 +60,23 @@ decided that the benefits of using only one language for both the client and
 server outweighed the other factors. An ExpressJS app was built on Node using
 mongoDB to keep the resources.
 
+## React
+
+This was my first project built using a front-end framework and many of my goals
+and challenges were centered around this. I really enjoyed learning how to
+develop within the React framework. Learning how to structure an app with
+components and manage their state and understanding the proper data flow was a
+fun challenge. Using routes to manage views allowed me to create a natural user
+experience.
+
+## nodemailer
+
+Another feature that I added to this project was the ability for a user to send
+their wishlist to a friend via email. I implemented this using a package called
+nodemailer. I created a new endpoint in my API that would receive the data from
+the client and send the email with nodemailer. The endpoint will return an
+appropriate status code on success or failure.
+
 ## Wireframes
 ![Wireframe](https://i.imgur.com/Yrz7TdG.png)
 
