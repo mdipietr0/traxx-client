@@ -77,6 +77,12 @@ nodemailer. I created a new endpoint in my API that would receive the data from
 the client and send the email with nodemailer. The endpoint will return an
 appropriate status code on success or failure.
 
+## session
+
+I wanted to give users the convenience of not having to sign in every time they
+navigate to the app or reload the app. After a bit of research I settled on
+using the sessionStorage API. 
+
 ## Wireframes
 ![Wireframe](https://i.imgur.com/Yrz7TdG.png)
 
