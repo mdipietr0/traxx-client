@@ -20,8 +20,6 @@ import LandingPage from './albums/components/LandingPage'
 
 import axios from 'axios'
 
-
-
 class App extends Component {
   constructor () {
     super()
@@ -29,16 +27,22 @@ class App extends Component {
     this.state = {
       query: '',
       results: null,
-      user: null,
+      user: JSON.parse(sessionStorage.getItem('user')),
       flashMessage: '',
       flashType: null,
       isLoading: false
     }
   }
 
-  setUser = user => this.setState({ user })
+  setUser = user => {
+    this.setState({ user })
+    sessionStorage.setItem('user', JSON.stringify(user))
+  }
 
-  clearUser = () => this.setState({ user: null })
+  clearUser = () => {
+    this.setState({ user: null })
+    sessionStorage.removeItem('user')
+  }
 
   flash = (message, type) => {
     this.setState({ flashMessage: message, flashType: type })
