@@ -18,6 +18,7 @@ import AlbumShow from './albums/components/AlbumShow'
 import MailerForm from './albums/components/MailerForm'
 import LandingPage from './albums/components/LandingPage'
 
+import { search } from './api.js'
 import axios from 'axios'
 
 class App extends Component {
@@ -60,12 +61,12 @@ class App extends Component {
     const {query} = this.state
     this.setState({
       isLoading: true
-    }, () => console.log(this.state.results))
-    const results = await axios(`https://api.discogs.com/database/search?q=${query}&type=master&token=NcoQgYPGBIypBlMCtCHoHMAVWLIhKAMzSXKfBYan`)
+    })
+    const results = await search(query)
     this.setState({
       results,
       isLoading: false
-    }, () => console.log(this.state.results))
+    })
     this.props.history.push('/results')
   }
 
