@@ -81,7 +81,15 @@ appropriate status code on success or failure.
 
 I wanted to give users the convenience of not having to sign in every time they
 navigate to the app or reload the app. After a bit of research I settled on
-using the sessionStorage API. 
+using the sessionStorage API.
+
+## search api
+
+In order to make a call to discogs api from my react client without exposing the
+token to the user or the public I created a route on my node server that handles
+this. The route '/search' handles making the request to the discogs api. To pass
+is the query I set up my route to take a query string in the form of:
+  /search?q=[query]
 
 ## Wireframes
 ![Wireframe](https://i.imgur.com/Yrz7TdG.png)
