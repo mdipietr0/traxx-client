@@ -12,7 +12,7 @@ import {
 import {
   unauthenticatedOptions,
   authenticatedOptions} from './navLinks'
-import './Navbar.scss'
+import '../Navbar.scss'
 
 class NavBar extends Component {
   constructor(props) {
