@@ -1,60 +1,36 @@
-import React, {Fragment, Component} from 'react'
-import { Link, Redirect, withRouter } from 'react-router-dom'
-import {index, create, destroy, mailer} from '../api'
-import messages from '../messages'
-import Album from './Album'
-import Loading from './Loading'
-import axios from 'axios'
+import React, { Fragment } from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import { Jumbotron, Row, Col, Container } from 'reactstrap'
+import '../styles/LandingPage.scss'
 
-class LandingPage extends Component {
-  constructor (props) {
-    super (props)
-    this.state = {
-      results: ''
-    }
-  }
-  componentDidMount = async () => {
-    const year = (new Date()).getYear() + 1900
-    const query = ''
-    let results = await axios(`https://api.discogs.com/database/search?q=${query}&type=master&year=${year}&token=NcoQgYPGBIypBlMCtCHoHMAVWLIhKAMzSXKfBYan`)
-    // await this.setState({ results })
-    results = results.data.results
-      .filter(album => !album.cover_image.includes('spacer.gif'))
-      .map(album => {
-        const {id, title, cover_image} = album
-        return { id, title, cover_image }
-      })
-
-    results = results.map(result => (
-      <Album
-        flash={this.props.flash}
-        isResults={true}
-        key={result.id}
-        user={this.props.user}
-        id={result.id}
-        title={result.title}
-        cover_image={result.cover_image}
-        className='album-thumb mb-auto m-1 display-box shadow'
-      />
-    ))
-    await this.setState({ results })
-  }
-
-  render () {
-    const content = this.state.results || <Loading />
-    return (
-      // <div className='container'>
-      //   <h1>Landing Page</h1>
-      //   <p>{this.state.results && this.state.results.data.results[0]}</p>
-      // </div>
-      <div className="container-fluid mt-5">
-        <h4 className='mx-5'>New Releases</h4>
-        <div className="d-flex flex-wrap justify-content-center">
-          {content}
-        </div>
+const LandingPage = () => (
+  <Fragment>
+    <Jumbotron fluid className='recordbg text-center'>
+      <div className='p-4 m-4'>
+        <h2 className='display-4 mx-5 mt-5 text-light text-shadow'>Discover new albums and track your wishlist</h2>
+        <h4 className='lead mx-5 mb-5 text-light'>Search for an album to begin</h4>
       </div>
-    )
-  }
-}
+    </Jumbotron>
+    <Container>
+      <Row>
+        <Col>
+          <h4 className='text-dark text-center'>Discover</h4>
+          <p className='text-justify'>Find old favorites or discover new ones! Traxx uses the Discogs API to search over 10 million albums by over 5 million different artists.</p>
+        </Col>
+        <Col>
+          <h4 className='text-dark text-center'>Track</h4>
+          <p className='text-justify'>You can create and share a wishlist and keep track of all your most wanted albums.</p>
+        </Col>
+        <Col>
+          <h4 className='text-dark text-center'>Share</h4>
+          <p className='text-justify'>Your family and friends will know exactly what to get you!
+            To begin creating your wishlist, <Link to='/sign-in'>Sign In</Link> or <Link to='/sign-up'>Create an Account</Link>!
+            Just click the add to wishlist icon button on each album.
+          </p>
+        </Col>
+      </Row>
+    </Container>
+  </Fragment>
+)
 
 export default withRouter(LandingPage)
