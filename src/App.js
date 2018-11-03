@@ -1,24 +1,18 @@
 import React, { Fragment, Component } from 'react'
-
 import './App.scss'
-
 import { Route, Link, withRouter } from 'react-router-dom'
-
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
-import NavBar from './header/Navbar.js'
+import NavBar from './header/components/Navbar.js'
 import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
-
 import Results from './albums/components/Results'
 import Wishlist from './albums/components/Wishlist'
 import AlbumShow from './albums/components/AlbumShow'
 import MailerForm from './albums/components/MailerForm'
 import LandingPage from './albums/components/LandingPage'
-
 import { search } from './api.js'
-import axios from 'axios'
 
 class App extends Component {
   constructor () {
@@ -74,19 +68,13 @@ class App extends Component {
 
     return (
       <Fragment>
-        {/* <Header
-          query={this.state.query}
-          onSearch={(e) => this.onSearch(e)}
-          onChangeQuery={(e) => this.onChangeQuery(e)}
-          user={user}
-        /> */}
         <NavBar
           query={this.state.query}
           onSearch={(e) => this.onSearch(e)}
           onChangeQuery={(e) => this.onChangeQuery(e)}
           user={user}
         />
-        {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
+        {flashMessage && <h3 className={flashType + ' fixed-top w-25 mx-auto text-center'}>{flashMessage}</h3>}
         <Route path='/results' query={this.state.query} render={() => (
           <Results
             isLoading={this.state.isLoading}
