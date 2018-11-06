@@ -52,7 +52,7 @@ class AlbumShow extends Component {
       (
         <div className='container'>
 
-          <div className='row'>
+          <div className='row mt-4'>
             <div className='p-3'>
               <img
                 style={{height: '250px'}}

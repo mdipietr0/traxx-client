@@ -75,28 +75,29 @@ class App extends Component {
           user={user}
         />
         {flashMessage && <h3 className={flashType + ' fixed-top w-25 mx-auto text-center'}>{flashMessage}</h3>}
-        <Route path='/results' query={this.state.query} render={() => (
-          <Results
-            isLoading={this.state.isLoading}
-            flash={this.flash}
-            query={this.state.query}
-            onSearch={(e) => this.onSearch(e)}
-            onChangeQuery={(e) => this.onChangeQuery(e)}
-            results={this.state.results}
-            user={user}
-          />
-        )} />
-        <Route path='/wishlist' render={() => (
-          <Wishlist flash={this.flash} user={user}/>
-        )} />
-        <Route path='/mailerform' render={() => (
-          <MailerForm flash={this.flash} user={user}/>
-        )} />
-        <Route exact path='/' render={() => (
-          <LandingPage flash={this.flash} user={user}/>
-        )} />
-        <Route path='/albumshow' component={AlbumShow} />
-        <main className="container">
+
+        <main>
+          <Route exact path='/' render={() => (
+            <LandingPage flash={this.flash} user={user}/>
+          )} />
+          <Route path='/results' query={this.state.query} render={() => (
+            <Results
+              isLoading={this.state.isLoading}
+              flash={this.flash}
+              query={this.state.query}
+              onSearch={(e) => this.onSearch(e)}
+              onChangeQuery={(e) => this.onChangeQuery(e)}
+              results={this.state.results}
+              user={user}
+            />
+          )} />
+          <Route path='/wishlist' render={() => (
+            <Wishlist flash={this.flash} user={user}/>
+          )} />
+          <Route path='/mailerform' render={() => (
+            <MailerForm flash={this.flash} user={user}/>
+          )} />
+          <Route path='/albumshow' component={AlbumShow} />
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />
           )} />

@@ -85,7 +85,7 @@ class Wishlist extends Component {
       /> : ''
 
     return (
-      <div className="container-fluid mt-2">
+      <div className="container-fluid mt-4">
         <div className='row'>
           <div className='ml-auto pb-2 mr-5 mt-0'>
             {shareEmail}

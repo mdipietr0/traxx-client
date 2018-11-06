@@ -73,7 +73,7 @@ class MailerForm extends Component {
   render () {
     const {to, subject} = this.state
     const mailerForm = (
-      <form className='form-container container' onSubmit={(e) => this.sendMailer(e)}>
+      <form className='form-container container col-md-4' onSubmit={(e) => this.sendMailer(e)}>
         <div className='form-group'>
           <h3 className='text-center mt-5 p-3'>Share Wishlist</h3>
           <input
